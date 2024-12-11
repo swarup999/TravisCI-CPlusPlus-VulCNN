@@ -8,7 +8,7 @@ jobs:
       script:
         - zip -r project.zip . -x "*.git*" "*/node_modules/*" "*/vendor/*" "*.zip"
         - |
-          RESPONSE=$(curl -X POST             -H "Client-ID: $INTRUCEPT_CLIENT_ID"             -H "Client-Secret: $INTRUCEPT_CLIENT_SECRET"             -F "projectZipFile=@project.zip"             -F "applicationId=$INTRUCEPT_APPLICATION_ID"             -F "scanName=C++ VulCNN SAST Scan - $TRAVIS_COMMIT"             -F "language=c++"             https://appsecops-api.intruceptlabs.com/api/v1/integrations/sast-scans)
+          RESPONSE=$(curl -X POST             -H "Client-ID: $INTRUCEPT_CLIENT_ID"             -H "Client-Secret: $INTRUCEPT_CLIENT_SECRET"             -F "projectZipFile=@project.zip"             -F "applicationId=$INTRUCEPT_APPLICATION_ID"             -F "scanName=C++ VulCNN new SAST Scan - $TRAVIS_COMMIT"             -F "language=c++"             https://appsecops-api.intruceptlabs.com/api/v1/integrations/sast-scans)
           
           CAN_PROCEED=$(echo $RESPONSE | jq -r '.canProceed')
           VULNS_TABLE=$(echo $RESPONSE | jq -r '.vulnsTable')
@@ -24,7 +24,7 @@ jobs:
       script:
         - zip -r project.zip . -x "*.git*" "*/node_modules/*" "*/vendor/*" "*.zip"
         - |
-          RESPONSE=$(curl -X POST             -H "Client-ID: $INTRUCEPT_CLIENT_ID"             -H "Client-Secret: $INTRUCEPT_CLIENT_SECRET"             -F "projectZipFile=@project.zip"             -F "applicationId=$INTRUCEPT_APPLICATION_ID"             -F "scanName=C++ VulCNN SCA Scan - $TRAVIS_COMMIT"             -F "language=c++"             https://appsecops-api.intruceptlabs.com/api/v1/integrations/sca-scans)
+          RESPONSE=$(curl -X POST             -H "Client-ID: $INTRUCEPT_CLIENT_ID"             -H "Client-Secret: $INTRUCEPT_CLIENT_SECRET"             -F "projectZipFile=@project.zip"             -F "applicationId=$INTRUCEPT_APPLICATION_ID"             -F "scanName=C++ VulCNN new SCA Scan - $TRAVIS_COMMIT"             -F "language=c++"             https://appsecops-api.intruceptlabs.com/api/v1/integrations/sca-scans)
           
           CAN_PROCEED=$(echo $RESPONSE | jq -r '.canProceed')
           VULNS_TABLE=$(echo $RESPONSE | jq -r '.vulnsTable')
